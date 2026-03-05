@@ -1,6 +1,9 @@
 /**
  * enemies.js — Goomba-style enemy that walks back and forth.
  */
+
+const GOOMBA_WALK_SPEED = 1.4;   // pixels per frame-equivalent
+
 class Goomba {
     /**
      * @param {number} x         - Spawn x (world pixels)
@@ -13,7 +16,7 @@ class Goomba {
         this.height     = 28;
         this.x          = x;
         this.y          = y - this.height;   // position so feet are at y
-        this.vx         = -1.4;              // starts walking left
+        this.vx         = -GOOMBA_WALK_SPEED;   // starts walking left
         this.vy         = 0;
         this.onGround   = false;
         this.leftBound  = leftBound;

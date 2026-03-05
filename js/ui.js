@@ -108,13 +108,11 @@ class UI {
         ctx.font = '14px Arial';
         ctx.fillText('← → / A D   Move      ↑ / W / Space   Jump      Shift   Run', CANVAS_W / 2, CANVAS_H / 2 + 18);
 
-        // Blinking prompt
-        const blink = Math.floor(Date.now() / 600) % 2 === 0;
-        if (blink) {
-            ctx.fillStyle = '#fff';
-            ctx.font = 'bold 22px Arial';
-            ctx.fillText('Press ENTER to Start', CANVAS_W / 2, CANVAS_H / 2 + 62);
-        }
+        // "Press ENTER" prompt — slow blink so it's always visible in screenshots too
+        const blink = Math.floor(Date.now() / 800) % 3 !== 0;   // visible 2/3 of the time
+        ctx.fillStyle = blink ? '#FFD700' : 'rgba(255,215,0,0.4)';
+        ctx.font = 'bold 22px Arial';
+        ctx.fillText('Press ENTER to Start', CANVAS_W / 2, CANVAS_H / 2 + 62);
 
         ctx.restore();
     }

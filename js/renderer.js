@@ -71,13 +71,19 @@ class Renderer {
         // Sky gradient
         const sky = ctx.createLinearGradient(0, 0, 0, CANVAS_H);
         sky.addColorStop(0,    '#5EC8F0');
-        sky.addColorStop(0.7,  '#9EDFF8');
+        sky.addColorStop(0.65, '#9EDFF8');
         sky.addColorStop(1.0,  '#C8F0D8');
         ctx.fillStyle = sky;
         ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
+        // Solid green base below the horizon — prevents sky colour showing in
+        // the gaps between hills and the ground tiles.
+        ctx.fillStyle = '#8ED86E';
+        ctx.fillRect(0, Math.round(CANVAS_H * 0.70), CANVAS_W,
+                     CANVAS_H - Math.round(CANVAS_H * 0.70));
+
         // Far hills (slow parallax)
-        this._drawHills(cam.x * 0.2, '#8ED86E', 3);
+        this._drawHills(cam.x * 0.2, '#9EE878', 3);
 
         // Near hills (medium parallax)
         this._drawHills(cam.x * 0.4, '#70C44A', 2);

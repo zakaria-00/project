@@ -4,6 +4,10 @@
  * States: 'normal' | 'big' | 'dead'
  * Physics uses frame-equivalent values scaled by dt*60 for frame-rate independence.
  */
+
+/** Extra upward force applied each frame while the jump key is held. */
+const JUMP_BOOST_FORCE = 0.35;
+
 class Player {
     constructor(x, spawnY, big = false) {
         this.big = big;
@@ -125,7 +129,7 @@ class Player {
         if (this.jumpHeld) {
             if (input.isJump() && this.jumpTimer < this.maxJumpTime) {
                 // Extra upward force while key is held
-                this.vy     -= 0.35 * step;
+                this.vy     -= JUMP_BOOST_FORCE * step;
                 this.jumpTimer += dt;
             } else {
                 this.jumpHeld = false;

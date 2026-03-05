@@ -454,12 +454,15 @@ class Game {
     }
 
     _checkEndGoal(dt) {
+        const FLAG_SLIDE_SPEED  = 200;   // px/s
+        const FLAG_FINAL_OFFSET = 36;    // px above ground for flag rest position
+
         const goal = this.level.endGoal;
         if (goal.reached) {
             // Animate flag sliding down
             if (goal.flagSliding) {
-                goal.flagY = Math.min(goal.flagY + 200 * dt, GROUND_Y - 36);
-                if (goal.flagY >= GROUND_Y - 36) {
+                goal.flagY = Math.min(goal.flagY + FLAG_SLIDE_SPEED * dt, GROUND_Y - FLAG_FINAL_OFFSET);
+                if (goal.flagY >= GROUND_Y - FLAG_FINAL_OFFSET) {
                     // Wait a moment then show victory
                     if (!this._victoryTimer) this._victoryTimer = 1.8;
                 }
