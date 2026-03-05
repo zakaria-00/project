@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+canvas {
+    display: block;
+    /* crisp pixel art */
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    /* shadow to give the canvas depth */
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
