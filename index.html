@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunny Meadow Run</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Global constants, available to all scripts -->
+    <script>
+        const TILE_SIZE   = 32;
+        const CANVAS_W    = 800;
+        const CANVAS_H    = 480;
+        const GROUND_Y    = 13 * TILE_SIZE;   // 416 — top surface of main ground
+        const LEVEL_TILES = 210;
+        const LEVEL_WIDTH = LEVEL_TILES * TILE_SIZE; // 6720
+
+        // Physics (frame-equivalent values, scaled by dt*60)
+        const GRAVITY       = 0.55;
+        const MAX_FALL_SPD  = 15;
+        const JUMP_FORCE    = -13.5;
+        const PLAYER_SPD    = 4;
+        const PLAYER_RUN    = 7;
+        const DEATH_Y       = CANVAS_H + 80;
+    </script>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <script src="js/input.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/blocks.js"></script>
+    <script src="js/enemies.js"></script>
+    <script src="js/level.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
