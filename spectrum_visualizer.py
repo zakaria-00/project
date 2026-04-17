@@ -11,7 +11,7 @@ try:
     from colour.models import XYZ_to_sRGB
     try:
         from colour import SpectralShape
-    except (ImportError, AttributeError):  # pragma: no cover - version compatibility path
+    except ImportError:  # pragma: no cover - version compatibility path
         from colour.colorimetry import SpectralShape
 except ImportError as exc:  # pragma: no cover - import-time dependency diagnostics
     raise ImportError(
@@ -22,6 +22,8 @@ except ImportError as exc:  # pragma: no cover - import-time dependency diagnost
 
 VISIBLE_MIN_NM = 380
 VISIBLE_MAX_NM = 780
+TEXT_X_POS = 0.33
+TEXT_Y_POS = 0.2
 
 
 @dataclass(frozen=True)
@@ -194,7 +196,7 @@ def create_matplotlib_figure(initial_wavelength: int = 555):
         plt.Rectangle((0, 0), 1, 1, color="#000000", transform=ax_swatch.transAxes)
     )
 
-    text = fig.text(0.33, 0.2, "", fontsize=10, family="monospace", va="bottom")
+    text = fig.text(TEXT_X_POS, TEXT_Y_POS, "", fontsize=10, family="monospace", va="bottom")
 
     slider = Slider(
         ax=ax_slider,
