@@ -3,8 +3,6 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass
 from functools import lru_cache
-from typing import Tuple
-
 import numpy as np
 
 try:
@@ -38,7 +36,7 @@ class DisplayColor:
         return bool(np.any((self.srgb_unclipped < 0.0) | (self.srgb_unclipped > 1.0)))
 
     @property
-    def srgb_255(self) -> Tuple[int, int, int]:
+    def srgb_255(self) -> tuple[int, int, int]:
         values = np.clip(np.round(self.srgb_clipped * 255.0), 0, 255).astype(int)
         return int(values[0]), int(values[1]), int(values[2])
 
