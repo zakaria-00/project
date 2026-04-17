@@ -13,9 +13,9 @@ try:
     from colour.models import XYZ_to_sRGB
     try:
         from colour import SpectralShape
-    except Exception:  # pragma: no cover - version compatibility path
+    except (ImportError, AttributeError):  # pragma: no cover - version compatibility path
         from colour.colorimetry import SpectralShape
-except Exception as exc:  # pragma: no cover - import-time dependency diagnostics
+except ImportError as exc:  # pragma: no cover - import-time dependency diagnostics
     raise ImportError(
         "This tool requires the 'colour-science' package (import name 'colour'). "
         "If you accidentally installed the unrelated 'colour' module, uninstall it and "
@@ -113,7 +113,12 @@ def launch_jupyter_widget(initial_wavelength: int = 555) -> None:
 
     out = Output()
     fig, ax = plt.subplots(figsize=(10, 2.8))
-    ax.imshow(spectrum_img, aspect="auto", extent=[wavelengths.min(), wavelengths.max(), 0, 1], origin="lower")
+    ax.imshow(
+        spectrum_img,
+        aspect="auto",
+        extent=[wavelengths.min(), wavelengths.max(), 0, 1],
+        origin="lower",
+    )
     ax.set_yticks([])
     ax.set_xlabel("Wavelength (nm)")
     ax.set_title("Visible Spectrum (CIE 1931 2° → XYZ → sRGB D65, clipped to gamut)")
