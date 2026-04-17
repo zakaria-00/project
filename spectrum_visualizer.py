@@ -192,11 +192,20 @@ def create_matplotlib_figure(initial_wavelength: int = 555):
 
     ax_swatch.set_xticks([])
     ax_swatch.set_yticks([])
-    swatch_patch = ax_swatch.add_patch(plt.Rectangle((0, 0), 1, 1, color="#000000", transform=ax_swatch.transAxes))
+    swatch_patch = ax_swatch.add_patch(
+        plt.Rectangle((0, 0), 1, 1, color="#000000", transform=ax_swatch.transAxes)
+    )
 
     text = fig.text(0.33, 0.2, "", fontsize=10, family="monospace", va="bottom")
 
-    slider = Slider(ax=ax_slider, label="λ (nm)", valmin=VISIBLE_MIN_NM, valmax=VISIBLE_MAX_NM, valinit=initial_wavelength, valstep=1)
+    slider = Slider(
+        ax=ax_slider,
+        label="λ (nm)",
+        valmin=VISIBLE_MIN_NM,
+        valmax=VISIBLE_MAX_NM,
+        valinit=initial_wavelength,
+        valstep=1,
+    )
 
     def update(val):
         color = wavelength_to_display_color(float(val))

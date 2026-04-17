@@ -23,6 +23,9 @@ It provides:
 pip install colour-science matplotlib numpy ipywidgets
 ```
 
+Tested with `colour-science>=0.4`. The code includes a compatibility fallback for older/newer
+`SpectralShape` import locations.
+
 ## Common import error (`colour` vs `colour-science`)
 
 If you see errors like `cannot import name 'SpectralShape' from 'colour'`, you likely installed the wrong package (`colour`) instead of `colour-science`.
